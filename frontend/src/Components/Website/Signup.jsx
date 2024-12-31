@@ -1,16 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { GoArrowLeft } from "react-icons/go";
 import { GoEye } from "react-icons/go";
+
 import { GoEyeClosed } from "react-icons/go";
+import { Link } from "react-router-dom";
 
 const Signup = () => {
+  const [eyeIcon, seteyeIcon] = useState(true);
+
   return (
     <div className="w-full h-screen flex">
       <div className="w-2/4 h-screen overflow-hidden relative">
-        <button className="bg-gray-300 bg-clip-padding backdrop-filter text-white backdrop-blur bg-opacity-10 backdrop-saturate-100 backdrop-contrast-100 flex gap-2 items-center absolute m-4 py-2 px-4 rounded-lg ">
+        <Link
+          className="bg-gray-300 bg-clip-padding backdrop-filter text-white backdrop-blur bg-opacity-10 backdrop-saturate-100 backdrop-contrast-100 flex gap-2 items-center absolute m-4 py-2 px-4 rounded-lg "
+          to="/"
+        >
           <GoArrowLeft />
           Back
-        </button>
+        </Link>
         <img src="src/assets/Img/Login-Signup.jpg" alt="" />
       </div>
       <div className="w-2/4 h-screen flex justify-center items-center">
@@ -60,15 +67,49 @@ const Signup = () => {
                 Your password
               </label>
               <input
-                type="password"
+                type={`${eyeIcon === true ? "password" : "text"}`}
                 name="password"
                 id="password"
-                placeholder="••••••••"
+                placeholder={`${eyeIcon === true ? "••••••••" : "password"}`}
                 className="bg-red-50 border border-red-200  text-gray-900 text-sm rounded  block outline-red-400 w-full p-2.5  dark:placeholder-gray-400 dark:text-black "
                 required=""
               />
-              {/* <GoEye className="text-red-300 absolute right-0 top-10 mr-3" /> */}
-              <GoEyeClosed className="text-red-300 absolute right-0 top-10 mr-3" />
+              <span
+                onClick={() => seteyeIcon(() => !eyeIcon)}
+                className="text-red-300 cursor-pointer absolute right-0 top-10 mr-3 "
+              >
+                <GoEye className={`${eyeIcon === true ? "hidden" : "block"}`} />
+                <GoEyeClosed
+                  className={`${eyeIcon === false ? "hidden" : "block"}`}
+                />
+              </span>
+            </div>
+            <div className="relative">
+              <label
+                htmlFor="password"
+                className="block mb-2 text-sm font-medium text-black"
+              >
+                Confirm password
+              </label>
+              <input
+                type={`${eyeIcon === true ? "password" : "text"}`}
+                name="password"
+                id="password"
+                placeholder={`${
+                  eyeIcon === true ? "••••••••" : "confirm  password"
+                }`}
+                className="bg-red-50 border border-red-200  text-gray-900 text-sm rounded  block outline-red-400 w-full p-2.5  dark:placeholder-gray-400 dark:text-black "
+                required=""
+              />
+              <span
+                onClick={() => seteyeIcon(() => !eyeIcon)}
+                className="text-red-300 cursor-pointer absolute right-0 top-10 mr-3 "
+              >
+                <GoEye className={`${eyeIcon === true ? "hidden" : "block"}`} />
+                <GoEyeClosed
+                  className={`${eyeIcon === false ? "hidden" : "block"}`}
+                />
+              </span>
             </div>
             <div className="flex items-start">
               <div className="flex items-start">
@@ -103,12 +144,18 @@ const Signup = () => {
             </button>
             <div className="text-sm font-medium text-black">
               Already Have An Account?
-              <a
+              {/* <a
                 href="#"
                 className="text-blue-700 ml-1 hover:underline dark:text-blue-500"
               >
                 Login
-              </a>
+              </a> */}
+              <Link
+                className="text-blue-700 ml-1 hover:underline dark:text-blue-500"
+                to="/login"
+              >
+                Login
+              </Link>
             </div>
           </form>
         </div>

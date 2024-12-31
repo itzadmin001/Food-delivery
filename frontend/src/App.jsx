@@ -1,35 +1,19 @@
-import React from 'react'
-import GlassBugurCard from "./Components/Website/GlassBurgurCard"
-import Login from "./Components/Website/Login"
-import Signup from "./Components/Website/Signup"
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-
-
-
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import Login from "./Components/Website/Login";
+import Home from "./Home";
+import Signup from "./Components/Website/Signup";
 
 function App() {
-
-  const router = createBrowserRouter(
-    [
-      {
-        path: '/',
-        element: <GlassBugurCard />
-      },
-      {
-        path: '/login',
-        element: <Login />
-      },
-      {
-        path: '/signup',
-        element: <Signup />
-      }
-    ]
-  )
   return (
-    <div>
-      <RouterProvider router={router} />
-    </div>
-  )
+    <>
+      <Routes>
+        <Route path="/" exact element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+      </Routes>
+    </>
+  );
 }
 
-export default App
+export default App;
