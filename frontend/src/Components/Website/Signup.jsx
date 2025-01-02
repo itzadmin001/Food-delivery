@@ -18,7 +18,11 @@ const Signup = () => {
           <GoArrowLeft />
           Back
         </Link>
-        <img src="src/assets/Img/Login-Signup.jpg" alt="" />
+        <img
+          className="w-full h-screen object-cover"
+          src="src/assets/Img/LSI.jpg"
+          alt=""
+        />
       </div>
       <div className="w-2/4 h-screen flex justify-center items-center">
         <div className="w-full max-w-md p-4 sm:p-6 md:p-8  ">
