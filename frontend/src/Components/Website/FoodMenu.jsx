@@ -56,11 +56,11 @@ function FoodMenu() {
             <h1 className=' text-center font-bold text-[2vw]'>Menu That Always Make You <br /> To Fall In Love</h1>
             <div>
                 <div className='flex items-center justify-center gap-4 mt-5'>
-                    <h1 className='px-5 py-1 shadow-lg text-sm rounded-lg'>All</h1>
+                    <h1 className='px-5 py-1 hover:bg-[#EF4444] hover:text-white duration-300 cursor-pointer gap-3  border-2 text-sm bg-gray-50 shadow-md rounded-lg'>All</h1>
                     {
                         Category.map((item, i) => {
                             return (
-                                <div className=' flex items-center justify-center hover:bg-[#EF4444] hover:text-white duration-300 cursor-pointer gap-3 px-5 py-1 border-2 text-sm  shadow-lg rounded-lg'>
+                                <div className=' flex items-center justify-center hover:bg-[#EF4444] hover:text-white duration-300 cursor-pointer gap-3 px-5 py-1 border-2 text-sm bg-gray-50 shadow-md rounded-lg'>
                                     <h4>{item.icon}</h4>
                                     <h1>{item.name}</h1>
 
