@@ -8,7 +8,9 @@ import { FaHotdog } from "react-icons/fa";
 import { BiSolidDrink } from "react-icons/bi";
 import BurgerCard from "./BurgerCard";
 
+
 function FoodMenu() {
+  const [addToCart, SetaddToCart] = useState(null)
   const Category = [
     {
       name: "Burger",
@@ -460,7 +462,7 @@ function FoodMenu() {
           <h1 className="px-5 py-1 shadow-lg text-sm rounded-lg">All</h1>
           {Category.map((item, i) => {
             return (
-              <div className=" flex items-center justify-center hover:bg-[#EF4444] hover:text-white duration-300 cursor-pointer gap-3 px-5 py-1 border-2 text-sm  shadow-lg rounded-lg">
+              <div key={i} className=" flex items-center justify-center hover:bg-[#EF4444] hover:text-white duration-300 cursor-pointer gap-3 px-5 py-1 border-2 text-sm  shadow-lg rounded-lg">
                 <h4>{item.icon}</h4>
                 <h1>{item.name}</h1>
               </div>
@@ -470,7 +472,7 @@ function FoodMenu() {
       </div>
       <div className="flex flex-wrap mt-10 justify-start items-center gap-5 px-28 ">
         {menuItems.map((item, i) => {
-          return <BurgerCard data={item} />;
+          return <BurgerCard data={item} index={i} SetaddToCart={SetaddToCart} addToCart={addToCart} />;
         })}
       </div>
       <div className="w-fit mx-auto">
