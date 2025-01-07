@@ -2,31 +2,47 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { GoArrowRight } from "react-icons/go";
 import { GiBeachBag } from "react-icons/gi";
+import Container from "./Container";
 
 const Nav = () => {
+
+  const menu = [
+    {
+      name: "Home",
+      path: "/"
+    },
+    {
+      name: "Menu",
+      path: "/Menu"
+    },
+    {
+      name: "Services",
+      path: "/Services"
+    },
+    {
+      name: "Contact",
+      path: "/Contact"
+    }
+  ]
   return (
-    <>
-      <nav className="flex justify-between py-10 px-28 w-full ">
+    <Container>
+      <nav className="flex p-4 justify-between py-10 items-center w-full ">
         <div>
           <Link className=" text-4xl text-red-600 font-extrabold">
-            B<span className="text-gray-700">ULL</span>D
-            <span className="text-gray-700">OGZ</span>
+            B<span className="text-gray-300">ULL</span>D
+            <span className="text-gray-300">OGZ</span>
           </Link>
         </div>
-        <div className="flex gap-10 ">
-          <Link className="active: py-2 text-red-600 font-semibold " to="/">
-            Home
-          </Link>
-
-          <Link className=" py-2 text-red-600 font-semibold  " to="/Menu">
-            Menu
-          </Link>
-          <Link className=" py-2 text-red-600 font-semibold " to="/Services">
-            Service
-          </Link>
-          <Link className=" py-2 text-red-600 font-semibold " to="/Contact">
-            Contact
-          </Link>
+        <div className="flex gap-10 uppercase ">
+          {
+            menu.map((item, i) => {
+              return (
+                <Link key={i} className="active: py-2 hover:text-gray-300 text-red-500 duration-300 font-semibold " to={item.path}>
+                  {item.name}
+                </Link>
+              )
+            })
+          }
         </div>
         <div className="flex items-center gap-9 relative">
           <div className="absolute right-44">
@@ -41,7 +57,7 @@ const Nav = () => {
 
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      class="absolute inset-y-0 my-auto h-16 w-14 border-transparent stroke-gray-700 px-3.5 peer-focus:border-red-300 peer-focus:stroke-red-300"
+                      class="absolute inset-y-0 my-auto h-16 w-14 border-transparent stroke-gray-100 px-3.5 peer-focus:border-red-300 peer-focus:stroke-red-300"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -58,12 +74,12 @@ const Nav = () => {
             </div>
           </div>
 
-          <span className="text-gray-700 text-3xl cursor-pointer select-none	">
+          <span className="text-gray-200 text-3xl cursor-pointer select-none	">
             <GiBeachBag />
           </span>
 
           <Link
-            className=" bg-red-500 py-2 px-4 flex gap-2 items-center text-white  rounded-md font-bold "
+            className=" bg-red-500 py-2 px-4 bg-transparent hover:bg-gray-300 border-2 flex gap-2 duration-300 hover:text-black items-center text-white  rounded-2xl font-bold "
             to="/login"
           >
             Login
@@ -71,7 +87,7 @@ const Nav = () => {
           </Link>
         </div>
       </nav>
-    </>
+    </Container>
   );
 };
 

@@ -7,6 +7,7 @@ import { GiBowlOfRice } from "react-icons/gi";
 import { FaHotdog } from "react-icons/fa";
 import { BiSolidDrink } from "react-icons/bi";
 import BurgerCard from './BurgerCard';
+import Container from './Container';
 
 
 function FoodMenu() {
@@ -51,7 +52,7 @@ function FoodMenu() {
         }
     ]
     return (
-        <div className='px-4 mt-20'>
+        <Container classes='px-4 mt-20'>
             <h3 className=' text-center text-red-500 text-sm'>Our Menu</h3>
             <h1 className=' text-center font-bold text-[2vw]'>Menu That Always Make You <br /> To Fall In Love</h1>
             <div>
@@ -70,7 +71,7 @@ function FoodMenu() {
                     }
                 </div>
             </div>
-            <div className="flex flex-wrap mt-10 justify-start items-center gap-5 px-28 ">
+            <div className="flex flex-wrap justify-center mt-10 gap-5">
                 <BurgerCard />
                 <BurgerCard />
                 <BurgerCard />
@@ -79,10 +80,10 @@ function FoodMenu() {
                 <BurgerCard />
                 <BurgerCard />
             </div>
-            <div className='w-fit mx-auto'>
+            <div className='w-fit mx-auto mt-10'>
                 <h1 className=' text-red-500 text-sm px-3 py-2 border-2 shadow-md rounded-xl '>Show more</h1>
             </div>
-        </div>
+        </Container>
     )
 }
 
