@@ -10,7 +10,7 @@ import BurgerCard from "./BurgerCard";
 
 
 function FoodMenu() {
-  const [addToCart, SetaddToCart] = useState(null)
+  const [addToCart, SetaddToCart] = useState([])
   const Category = [
     {
       name: "Burger",
@@ -451,6 +451,14 @@ function FoodMenu() {
     },
   ];
 
+  const AddToCartHandler = (index) => {
+    if (!addToCart.includes(index)) {
+      SetaddToCart([...addToCart, index]);
+    } else {
+      const updatedCart = addToCart.filter((item) => item !== index);
+      SetaddToCart(updatedCart);
+    }
+  }
   return (
     <div className="px-4 mt-20">
       <h3 className=" text-center text-red-500 text-sm">Our Menu</h3>
@@ -472,7 +480,7 @@ function FoodMenu() {
       </div>
       <div className="flex flex-wrap mt-10 justify-start items-center gap-5 px-28 ">
         {menuItems.map((item, i) => {
-          return <BurgerCard data={item} index={i} SetaddToCart={SetaddToCart} addToCart={addToCart} />;
+          return <BurgerCard data={item} index={i} AddToCartHandler={AddToCartHandler} SetaddToCart={SetaddToCart} addToCart={addToCart} />;
         })}
       </div>
       <div className="w-fit mx-auto">

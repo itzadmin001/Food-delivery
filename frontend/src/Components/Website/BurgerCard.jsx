@@ -1,7 +1,7 @@
 import React from "react";
 import { FaShoppingBasket } from "react-icons/fa";
 import { IoBagCheck } from "react-icons/io5";
-const BurgerCard = ({ data, SetaddToCart, addToCart, index }) => {
+const BurgerCard = ({ AddToCartHandler, data, SetaddToCart, addToCart, index }) => {
   // yaha per 5-6 recipe items ka data bna or niche unko print kr
   // data me items ka name 2. wait 3. uska description 4. price hona chaiye
   // or agar category k hisab se kare to perticular category jese burger , pizza , etc. ki hd png image bhi map krni hai kr seke to..
@@ -19,14 +19,10 @@ const BurgerCard = ({ data, SetaddToCart, addToCart, index }) => {
         </div>
         <div className="flex items-center justify-between gap-4">
           <h1 className="text-xl font-bold">${price}</h1>
-          <div onClick={() => {
-            addToCart === index ?
-              SetaddToCart(null) : SetaddToCart(index)
-
-          }} className={`flex items-center  gap-2 ${addToCart === index ? "bg-[#E5E7EB] text-black" : "bg-yellow-400"}  p-2 rounded-2xl cursor-pointer shadow-md`}>
-            <h1 className=" text-sm font-semibold" >{addToCart === index ? "Added" : "Add To Cart"}</h1>
+          <div onClick={() => AddToCartHandler(index)} className={`flex items-center gap-1 ${addToCart.includes(index) ? "bg-[#E5E7EB] text-black" : "bg-yellow-400"}  p-2 rounded-2xl cursor-pointer shadow-md`}>
+            <h1 className=" text-sm font-semibold" >{addToCart.includes(index) ? "Added!" : "Add To Cart"}</h1>
             {
-              addToCart === index ? <IoBagCheck /> : <FaShoppingBasket />
+              addToCart.includes(index) ? < IoBagCheck /> : <FaShoppingBasket />
             }
 
 
