@@ -8,41 +8,9 @@ import { FaHotdog } from "react-icons/fa";
 import { BiSolidDrink } from "react-icons/bi";
 import BurgerCard from "./BurgerCard";
 
-
 function FoodMenu() {
-  const [addToCart, SetaddToCart] = useState([])
-  const Category = [
-    {
-      name: "Burger",
-      icon: <PiHamburgerFill />,
-    },
-    {
-      name: "Coffee",
-      icon: <GiCoffeeCup />,
-    },
-    {
-      name: "Pizza",
-      icon: <FaPizzaSlice />,
-    },
-    {
-      name: "Salad",
-      icon: <LuSalad />,
-    },
-    {
-      name: "rice",
-      icon: <GiBowlOfRice />,
-    },
-    {
-      name: "Hot Dog",
-      icon: <FaHotdog />,
-    },
-    {
-      name: "Drinks",
-      icon: <BiSolidDrink />,
-    },
-  ];
-
-  const menuItems = [
+  const [addToCart, SetaddToCart] = useState([]);
+  const [product, Setproduct] = useState([
     {
       name: "Lemonade",
       short_description: "Refreshing homemade lemonade with a hint of mint.",
@@ -353,7 +321,7 @@ function FoodMenu() {
       weight: "420 g",
     },
     {
-      name: "Veggie Supreme Pizza",
+      name: "Veggie Pizza",
       short_description:
         "Loaded with bell peppers, olives, onions, and mushrooms.",
       price: 13.99,
@@ -449,6 +417,38 @@ function FoodMenu() {
       image: "images/spicy_chicken_burger.jpg",
       weight: "330 g",
     },
+  ]);
+  const [selectCategory, SetselectCategory] = useState("All");
+
+  const Category = [
+    {
+      name: "Burger",
+      icon: <PiHamburgerFill />,
+    },
+    {
+      name: "Coffee",
+      icon: <GiCoffeeCup />,
+    },
+    {
+      name: "Pizza",
+      icon: <FaPizzaSlice />,
+    },
+    {
+      name: "Salad",
+      icon: <LuSalad />,
+    },
+    {
+      name: "Rice",
+      icon: <GiBowlOfRice />,
+    },
+    {
+      name: "Hot Dog",
+      icon: <FaHotdog />,
+    },
+    {
+      name: "Drinks",
+      icon: <BiSolidDrink />,
+    },
   ];
 
   const AddToCartHandler = (index) => {
@@ -458,38 +458,71 @@ function FoodMenu() {
       const updatedCart = addToCart.filter((item) => item !== index);
       SetaddToCart(updatedCart);
     }
-  }
-  return (
-    <div className="px-4 mt-20">
-      <h3 className=" text-center text-red-500 text-sm">Our Menu</h3>
-      <h1 className=" text-center font-bold text-[2vw]">
-        Menu That Always Make You <br /> To Fall In Love
-      </h1>
-      <div>
-        <div className="flex items-center justify-center gap-4 mt-5">
-          <h1 className="px-5 py-1 shadow-lg text-sm rounded-lg">All</h1>
-          {Category.map((item, i) => {
-            return (
-              <div key={i} className=" flex items-center justify-center hover:bg-[#EF4444] hover:text-white duration-300 cursor-pointer gap-3 px-5 py-1 border-2 text-sm  shadow-lg rounded-lg">
-                <h4>{item.icon}</h4>
-                <h1>{item.name}</h1>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-      <div className="flex flex-wrap mt-10 justify-start items-center gap-5 px-28 ">
-        {menuItems.map((item, i) => {
-          return <BurgerCard data={item} index={i} AddToCartHandler={AddToCartHandler} SetaddToCart={SetaddToCart} addToCart={addToCart} />;
+  };
+
+  console.log(product);
+
+  const categoryHandler = (category) => {
+    if (selectCategory === "All") {
+      Setproduct(data);
+    } else {
+      const updatedProduct = product.filter(
+        (item) => item.Category === category
+      );
+      Setproduct(updatedProduct);
+    }
+  };
+}
+
+return (
+  <div className="px-4 mt-20">
+    <h3 className=" text-center text-red-500 text-sm">Our Menu</h3>
+    <h1 className=" text-center font-bold text-[2vw]">
+      Menu That Always Make You <br /> To Fall In Love
+    </h1>
+    <div>
+      <div className="flex items-center justify-center gap-4 mt-5">
+        <h1
+          className="px-5 py-1 shadow-lg text-sm rounded-lg cursor-pointer"
+          onClick={() => categoryHandler("All")}
+        >
+          All
+        </h1>
+        {Category.map((item, i) => {
+          return (
+            <div
+              key={i}
+              onClick={() => categoryHandler(item.Category)}
+              className=" flex items-center justify-center hover:bg-[#EF4444] hover:text-white duration-300 cursor-pointer gap-3 px-5 py-1 border-2 text-sm  shadow-lg rounded-lg"
+            >
+              <h4>{item.icon}</h4>
+              <h1>{item.name}</h1>
+            </div>
+          );
         })}
       </div>
-      <div className="w-fit mx-auto">
-        <h1 className=" text-red-500 text-sm px-3 py-2 border-2 shadow-md rounded-xl ">
-          Show more
-        </h1>
+    </div>
+    <div className="">
+      <div className="flex w-full justify-center flex-wrap mt-10  gap-10 px-28 ">
+        {product.map((item, i) => {
+          return (
+            <BurgerCard
+              data={item}
+              index={i}
+              AddToCartHandler={AddToCartHandler}
+              SetaddToCart={SetaddToCart}
+              addToCart={addToCart}
+            />
+          );
+        })}
       </div>
     </div>
-  );
-}
+    <div className="w-fit mx-auto">
+      <h1 className=" text-red-500 text-sm px-3 py-2 border-2 shadow-md rounded-xl ">
+        Show more
+      </h1>
+    </div>
+  </div>
+);
 
 export default FoodMenu;

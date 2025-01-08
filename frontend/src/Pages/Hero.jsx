@@ -1,14 +1,12 @@
 import React from "react";
 import { FaPlay } from "react-icons/fa6";
-import Nav from "../Components/Website/Nav"
-import Container from "../Components/Website/Container"
+import Nav from "../Components/Website/Nav";
+import Container from "../Components/Website/Container";
 
 const Hero = () => {
-
-
   return (
     <div className="w-full h-[100vh]">
-      <div className="w-full h-full bg-cover bg-[url(src/assets/Img/bg-.jpg)] bg-no-repeat">
+      <div className="w-full h-full bg-cover bg-[url(src/assets/Img/Bannerbg.png)] bg-no-repeat">
         <Nav />
         <Container classes="flex mt-10 select-none ">
           <section className="w-1/2 relative">
@@ -38,9 +36,8 @@ const Hero = () => {
             </div>
           </section>
         </Container>
-      </div >
-
-    </ div>
+      </div>
+    </div>
   );
 };
 

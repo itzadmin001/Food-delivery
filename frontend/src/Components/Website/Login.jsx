@@ -12,12 +12,19 @@ const Login = () => {
     <>
       <div className="w-full h-screen flex">
         <div className="w-2/4 h-screen overflow-hidden relative">
-          <Link
+          {/* <Link
             className="bg-gray-300 bg-clip-padding backdrop-filter text-white backdrop-blur bg-opacity-10 backdrop-saturate-100 backdrop-contrast-100 flex gap-2 items-center absolute m-4 py-2 px-4 rounded-lg "
             to="/"
           >
             <GoArrowLeft />
             Back
+          </Link> */}
+          <Link
+            className=" bg-red-500 py-2 px-4 bg-transparent hover:bg-gray-300 border-2 flex gap-2 duration-300 hover:text-black items-center absolute text-white  rounded-2xl font-bold m-4 "
+            to="/"
+          >
+            Back
+            <GoArrowLeft />
           </Link>
           <img
             className="w-full h-screen object-cover"
