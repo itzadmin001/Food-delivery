@@ -17,7 +17,7 @@ const BurgerCard = ({
   return (
     <div className="flex  w-64 h-72 mt-5 select-none items-center bg-gray-50 justify-center shadow-xl p-5 hover:bg-[#e74c4c] duration-300 hover:text-white rounded-xl">
       <div className="rounded-xl flex flex-col gap-3 items-center justify-center ">
-        <img src="src/assets/Img/burger.webp" alt="" className="w-[8vw]" />
+        <img src={image} alt="" className="w-[8vw]" />
         <div className="w-[12vw] flex flex-col items-center justify-center">
           <h1 className="text-lg font-bold">{name}</h1>
           <h1 className="font-semibold">{weight}</h1>
@@ -27,11 +27,10 @@ const BurgerCard = ({
           <h1 className="text-xl font-bold">${price}</h1>
           <div
             onClick={() => AddToCartHandler(index)}
-            className={`flex items-center gap-1 ${
-              addToCart.includes(index)
+            className={`flex items-center gap-1 ${addToCart.includes(index)
                 ? "bg-[#E5E7EB] text-black"
                 : "bg-yellow-400"
-            }  p-2 rounded-2xl cursor-pointer shadow-md`}
+              }  p-2 rounded-2xl cursor-pointer shadow-md`}
           >
             <h1 className=" text-sm font-semibold">
               {addToCart.includes(index) ? "Added!" : "Add To Cart"}
